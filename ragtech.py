@@ -1,3 +1,4 @@
+import serial
 # copy variables from devices.xml for Quadri 1200
 
 # constants from XML (consts)
@@ -69,6 +70,9 @@ FLAGS_10 = 0x10
 
 # sample message
 message = b'\x99\x88\x77\x66\x55\x44\x99\x88\x77\x66\x55\x44\x99\x88\x77\x66\x55\x44\x99\x88\x77\x66\x55\x44\x99\x88\x77\x66\x55\x44\x99\x88\x77\x66\x55\x44'
+# open serial connection
+ser = serial.Serial('/dev/ttyACM0', 2400)
+message = ser.read(33)
 
 # read bytes
 var_V_VERSION = message[V_VERSION]
@@ -166,3 +170,8 @@ nominalVOutput = C_VOUTNOMINAL
 nominalFOutput = C_FINNOMINAL
 nominalPOutput = C_POUTNOMINAL
 nominalVBattery = C_VBATNOMINAL
+
+
+print(temperature)
+print(cBaterry)
+
